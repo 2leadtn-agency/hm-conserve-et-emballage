@@ -1,12 +1,535 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+
+const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
+
+const methods = [
+  {
+    num: "01",
+    icon: "can",
+    title: "Boîtes métalliques",
+    subtitle: "Conserve métallique",
+    img: "/images/gros-plan-boites-metalliques-scellees.jpg",
+    alt: "Gros plan sur des boîtes de conserve métalliques scellées, empilées",
+    text: "Idéale pour les grandes quantités et une conservation longue durée à température ambiante. Vos plats mijotés, sauces et légumes sont scellés hermétiquement puis stérilisés.",
+    tags: ["Plats cuisinés", "Sauces & confitures", "Grandes quantités"],
+  },
+  {
+    num: "02",
+    icon: "jar",
+    title: "Bocaux en verre",
+    subtitle: "بلار",
+    img: "/images/mains-vissant-couvercle-bocal-verre.jpg",
+    alt: "Mains fermant le couvercle d'un bocal en verre rempli de légumes conservés",
+    text: "Le verre laisse voir la couleur et la texture de votre préparation — confiture, harissa, légumes marinés — tout en gardant l'authenticité du fait-maison.",
+    tags: ["Confitures", "Harissa", "Légumes marinés & olives"],
+  },
+  {
+    num: "03",
+    icon: "vacuum-bag",
+    title: "Sachets sous vide",
+    subtitle: "Sous vide",
+    img: "/images/sachets-sous-vide-legumes-empiles.jpg",
+    alt: "Sachets sous vide empilés contenant des légumes préparés maison",
+    text: "Sans air, sans oxydation : le sous vide protège la fraîcheur et prolonge la conservation au réfrigérateur ou au congélateur. Idéal pour les portions du quotidien.",
+    tags: ["Portions individuelles", "Surgélation", "Fraîcheur prolongée"],
+  },
+];
+
+const trust = [
+  { icon: "shield-check", title: "Hygiène contrôlée", text: "Chaque étape respecte des normes strictes de propreté et de sécurité alimentaire." },
+  { icon: "thermometer", title: "Stérilisation maîtrisée", text: "Température et temps calculés pour une conservation longue durée, sans rien ajouter." },
+  { icon: "leaf", title: "Votre recette, intacte", text: "Nous ne changeons rien à vos ingrédients ni à votre façon de cuisiner." },
+  { icon: "package", title: "Emballage sur-mesure", text: "Boîte, bocal ou sachet choisi selon la nature de votre préparation." },
+];
 ---
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apercu</title>
-</head>
-<body>
-  <h1>Apercu en cours de construction</h1>
-</body>
-</html>
+
+<Layout
+  title="HM Conserve et Emballage - Mise en Conserve Artisanale"
+  description="Apportez vos préparations maison — confitures, harissa, légumes, olives — HM Conserve et Emballage les met en conserve professionnellement : boîtes métalliques, bocaux en verre, sachets sous vide."
+  active="accueil"
+>
+  <section class="hero">
+    <div class="hero-media">
+      <img src="/images/hero-bocaux-lumiere-doree.jpg" alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée" />
+      <div class="hero-media-veil"></div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-eyebrow reveal">Conserverie artisanale &middot; Tunisie</p>
+      <h1 class="hero-title reveal reveal-delay-1">Ce que vos mains<br />ont cuisiné,<br /><em>nous le préservons.</em></h1>
+      <p class="hero-lede reveal reveal-delay-2">HM Conserve et Emballage transforme vos préparations maison en conserves professionnelles — boîtes métalliques, bocaux en verre ou sachets sous vide — sans jamais toucher à votre recette.</p>
+      <div class="hero-actions reveal reveal-delay-3">
+        <a class="btn-primary" href={waLink} target="_blank" rel="noopener noreferrer">
+          <Icon name="phone" size={17} stroke={1.8} /> Discuter sur WhatsApp
+        </a>
+        <a class="btn-ghost" href="#methodes">
+          Voir nos méthodes <Icon name="arrow-down-right" size={16} stroke={1.8} />
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-seal reveal reveal-delay-2" aria-hidden="true">
+      <svg viewBox="0 0 200 200">
+        <defs>
+          <path id="sealCirc" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" />
+        </defs>
+        <g class="seal-rotate">
+          <circle cx="100" cy="100" r="94" class="seal-ring" />
+          <text class="seal-text">
+            <textPath href="#sealCirc" startOffset="0%">HM CONSERVE ET EMBALLAGE &#8226; تعليب كل المأكولات المنزلية &#8226; </textPath>
+          </text>
+        </g>
+        <text x="100" y="112" text-anchor="middle" class="seal-mark">HM</text>
+      </svg>
+    </div>
+  </section>
+
+  <section class="trust-strip reveal">
+    <div class="trust-inner">
+      {trust.map((t) => (
+        <div class="trust-item">
+          <Icon name={t.icon} size={26} stroke={1.4} />
+          <h3>{t.title}</h3>
+          <p>{t.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="narrative">
+    <div class="narrative-inner">
+      <div class="narrative-text reveal">
+        <span class="section-kicker">De votre marmite à votre étagère</span>
+        <h2>Votre cuisine entre. <em>Elle ressort intacte, prête à durer.</em></h2>
+        <p>Vous apportez vos légumes, vos fruits, votre harissa fraîchement préparée à la maison. Nous nous chargeons du reste : lavage, mise en pot ou en boîte, scellage hermétique et stérilisation — dans le respect total de votre recette.</p>
+      </div>
+      <div class="narrative-media">
+        <figure class="narrative-photo narrative-photo-before reveal">
+          <img src="/images/femme-cuisine-marmite-legumes-maison.jpg" alt="Préparation de légumes faits maison dans une marmite, cuisine traditionnelle" />
+          <figcaption>Votre préparation, à la maison</figcaption>
+        </figure>
+        <div class="narrative-arrow reveal reveal-delay-1" aria-hidden="true">
+          <Icon name="arrow-down-right" size={30} stroke={1.4} />
+        </div>
+        <figure class="narrative-photo narrative-photo-after reveal reveal-delay-2">
+          <img src="/images/bocaux-harissa-mise-en-pot-atelier.jpg" alt="Bocaux de harissa mis en pot dans un atelier propre et professionnel" />
+          <figcaption>Votre conserve, prête à durer</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="methods" id="methodes">
+    <div class="methods-head reveal">
+      <span class="section-kicker">Nos méthodes</span>
+      <h2>Trois façons de faire durer votre cuisine</h2>
+      <p>Chaque préparation a son emballage. Nous vous conseillons la méthode la plus adaptée à ce que vous nous apportez.</p>
+    </div>
+
+    <div class="methods-list">
+      {methods.map((m, i) => (
+        <article class={`method-row ${i % 2 === 1 ? "method-row-reverse" : ""} reveal`}>
+          <div class="method-media">
+            <img src={m.img} alt={m.alt} loading="lazy" />
+          </div>
+          <div class="method-text">
+            <span class="method-num">{m.num}</span>
+            <div class="method-icon"><Icon name={m.icon} size={30} stroke={1.4} /></div>
+            <h3>{m.title} <span class="method-subtitle" lang={m.subtitle === "بلار" ? "ar" : undefined} dir={m.subtitle === "بلار" ? "rtl" : undefined}>{m.subtitle}</span></h3>
+            <p>{m.text}</p>
+            <ul class="method-tags">
+              {m.tags.map((tag) => <li>{tag}</li>)}
+            </ul>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="quote-band reveal">
+    <p class="quote-text">On ne conserve pas seulement vos aliments.<br /><em>On conserve le goût de la maison.</em></p>
+  </section>
+
+  <section class="gallery-teaser">
+    <div class="gallery-head reveal">
+      <span class="section-kicker">Dans l'atelier</span>
+      <h2>Un savoir-faire qui se voit</h2>
+    </div>
+    <div class="gallery-grid">
+      <figure class="gallery-item gallery-item-wide reveal">
+        <img src="/images/olives-conserves-bocaux-etageres.jpg" alt="Étagères de bocaux d'olives et de légumes conservés" loading="lazy" />
+      </figure>
+      <figure class="gallery-item gallery-item-round reveal reveal-delay-1">
+        <img src="/images/atelier-emballage-hygiene-gants.jpg" alt="Mains gantées manipulant des conserves dans un atelier hygiénique" loading="lazy" />
+      </figure>
+      <figure class="gallery-item gallery-item-tall reveal reveal-delay-2">
+        <img src="/images/legumes-frais-panier-marche.jpg" alt="Panier de légumes frais apportés pour la mise en conserve" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="final-cta reveal">
+    <div class="final-cta-inner">
+      <h2>Prêt à faire durer votre cuisine ?</h2>
+      <div class="final-cta-actions">
+        <a class="btn-primary btn-on-dark" href={waLink} target="_blank" rel="noopener noreferrer">
+          <Icon name="phone" size={17} stroke={1.8} /> Discuter sur WhatsApp
+        </a>
+        <a class="final-cta-phone" href="tel:+21622796037">
+          <Icon name="phone" size={17} stroke={1.8} /> +216 22 796 037
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero { position: relative; }
+  .hero-media {
+    position: relative;
+    height: 58vh;
+    min-height: 380px;
+    overflow: hidden;
+  }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-media-veil {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--color-cream) 0%, rgba(248,239,220,0) 35%);
+  }
+  .hero-content {
+    position: relative;
+    margin-top: -56px;
+    background: var(--color-cream);
+    border-radius: 32px 32px 0 0;
+    padding: 40px 20px 36px;
+    z-index: 2;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-terracotta-dark);
+    margin-bottom: 14px;
+    display: block;
+  }
+  .hero-title {
+    font-size: clamp(2.1rem, 8vw, 4rem);
+    line-height: 1.05;
+    font-weight: 600;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--color-terracotta);
+    font-weight: 500;
+  }
+  .hero-lede {
+    font-size: 1.02rem;
+    line-height: 1.65;
+    color: var(--color-ink-soft);
+    max-width: 480px;
+    margin: 22px 0 0;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 30px;
+    align-items: flex-start;
+  }
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--color-terracotta);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 15px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 10px 24px rgba(178, 60, 37, 0.32);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    white-space: nowrap;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(178, 60, 37, 0.4); }
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-ink);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    padding: 8px 2px;
+    border-bottom: 2px solid var(--color-ink);
+    transition: color 0.3s ease, border-color 0.3s ease;
+  }
+  .btn-ghost:hover { color: var(--color-terracotta-dark); border-color: var(--color-terracotta-dark); }
+
+  .hero-seal { display: none; }
+
+  @media (min-width: 720px) {
+    .hero-actions { flex-direction: row; align-items: center; gap: 26px; }
+  }
+
+  @media (min-width: 960px) {
+    .hero { min-height: 94vh; display: flex; align-items: stretch; }
+    .hero-media { position: absolute; inset: 0; height: 100%; }
+    .hero-media-veil {
+      background: linear-gradient(100deg, rgba(44,36,22,0.55) 0%, rgba(44,36,22,0.28) 38%, rgba(44,36,22,0.02) 62%);
+    }
+    .hero-content {
+      position: relative;
+      margin-top: 0;
+      background: none;
+      border-radius: 0;
+      max-width: 620px;
+      padding: 150px 20px 130px 5vw;
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-eyebrow { color: var(--color-amber-light); }
+    .hero-title { color: #fff; }
+    .hero-title em { color: var(--color-amber-light); }
+    .hero-lede { color: rgba(255,253,247,0.88); }
+    .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.6); }
+    .btn-ghost:hover { color: var(--color-amber-light); border-color: var(--color-amber-light); }
+
+    .hero-seal {
+      display: block;
+      position: absolute;
+      right: 5vw;
+      bottom: -46px;
+      width: 150px;
+      height: 150px;
+      z-index: 3;
+    }
+    .hero-seal svg { width: 100%; height: 100%; }
+    .seal-rotate { transform-origin: 100px 100px; animation: seal-spin 30s linear infinite; }
+    @keyframes seal-spin { to { transform: rotate(360deg); } }
+    .seal-ring { fill: var(--color-cream); stroke: var(--color-terracotta); stroke-width: 1; opacity: 0.95; }
+    .seal-text {
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      fill: var(--color-terracotta-dark);
+    }
+    .seal-mark {
+      font-family: var(--font-display);
+      font-style: italic;
+      font-weight: 700;
+      font-size: 34px;
+      fill: var(--color-terracotta);
+    }
+  }
+
+  /* Trust strip */
+  .trust-strip { background: var(--color-olive); padding: 44px 20px; }
+  .trust-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .trust-item { color: var(--color-cream); }
+  .trust-item :global(svg) { color: var(--color-amber-light); margin-bottom: 12px; }
+  .trust-item h3 {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .trust-item p { font-size: 0.88rem; line-height: 1.6; color: rgba(248,239,220,0.75); }
+  @media (min-width: 720px) {
+    .trust-inner { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  }
+
+  /* Narrative */
+  .narrative { padding: 84px 20px; max-width: 1200px; margin: 0 auto; }
+  .narrative-inner { display: flex; flex-direction: column; gap: 48px; }
+  .section-kicker {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-terracotta-dark);
+    margin-bottom: 14px;
+  }
+  .narrative-text h2 {
+    font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+    line-height: 1.15;
+    margin-bottom: 18px;
+  }
+  .narrative-text h2 em { font-style: italic; color: var(--color-olive-dark); font-weight: 500; }
+  .narrative-text p { font-size: 1rem; line-height: 1.75; color: var(--color-ink-soft); max-width: 520px; }
+
+  .narrative-media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .narrative-photo {
+    margin: 0;
+    width: 100%;
+    max-width: 420px;
+    position: relative;
+  }
+  .narrative-photo img { width: 100%; height: 260px; object-fit: cover; border-radius: 18px; }
+  .narrative-photo-before img { border-radius: 18px 18px 4px 18px; }
+  .narrative-photo-after img { border-radius: 18px 4px 18px 18px; }
+  .narrative-photo figcaption {
+    font-size: 0.8rem;
+    color: var(--color-ink-soft);
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  .narrative-arrow { color: var(--color-terracotta); transform: rotate(90deg); }
+
+  @media (min-width: 860px) {
+    .narrative-inner { flex-direction: row; align-items: center; gap: 60px; }
+    .narrative-text { flex: 0 0 38%; }
+    .narrative-media { flex: 1; flex-direction: row; align-items: flex-end; justify-content: center; }
+    .narrative-photo-before { align-self: flex-start; }
+    .narrative-arrow { transform: none; margin: 0 -6px; }
+  }
+
+  /* Methods */
+  .methods { padding: 20px 20px 90px; max-width: 1200px; margin: 0 auto; }
+  .methods-head { max-width: 640px; margin-bottom: 50px; }
+  .methods-head h2 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; margin-bottom: 14px; }
+  .methods-head p { font-size: 1rem; line-height: 1.7; color: var(--color-ink-soft); }
+
+  .methods-list { display: flex; flex-direction: column; gap: 56px; }
+  .method-row {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(44,36,22,0.12);
+  }
+  .method-media img { width: 100%; height: 240px; object-fit: cover; border-radius: 16px; }
+  .method-num {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--color-terracotta);
+    font-weight: 600;
+  }
+  .method-icon { color: var(--color-olive-dark); margin: 10px 0 12px; }
+  .method-text h3 {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 14px;
+  }
+  .method-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .method-text p { font-size: 0.98rem; line-height: 1.75; color: var(--color-ink-soft); max-width: 480px; }
+  .method-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+    margin: 20px 0 0;
+  }
+  .method-tags li {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-olive-dark);
+    background: var(--color-olive-soft);
+    padding: 7px 14px;
+    border-radius: 100px;
+  }
+
+  @media (min-width: 860px) {
+    .method-row { flex-direction: row; align-items: center; gap: 60px; }
+    .method-row > * { flex: 1; }
+    .method-row-reverse { flex-direction: row-reverse; }
+    .method-media img { height: 340px; }
+  }
+
+  /* Quote band */
+  .quote-band {
+    background: var(--color-cream-deep);
+    padding: 100px 24px;
+    text-align: center;
+  }
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.4;
+    max-width: 780px;
+    margin: 0 auto;
+    color: var(--color-ink);
+  }
+  .quote-text em { font-style: italic; color: var(--color-terracotta-dark); }
+
+  /* Gallery teaser */
+  .gallery-teaser { padding: 90px 20px; max-width: 1200px; margin: 0 auto; }
+  .gallery-head { margin-bottom: 40px; }
+  .gallery-head h2 { font-size: clamp(1.7rem, 4.5vw, 2.4rem); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .gallery-item { margin: 0; overflow: hidden; }
+  .gallery-item img { width: 100%; height: 260px; object-fit: cover; }
+  .gallery-item-wide { border-radius: 20px; }
+  .gallery-item-round { border-radius: 50%; aspect-ratio: 1; }
+  .gallery-item-round img { height: 100%; }
+  .gallery-item-tall { border-radius: 20px 60px 20px 60px; }
+
+  @media (min-width: 720px) {
+    .gallery-grid { grid-template-columns: 1.4fr 1fr 1fr; align-items: center; }
+    .gallery-item-wide img { height: 100%; }
+    .gallery-item-wide { grid-row: span 2; height: 100%; }
+    .gallery-item-round { width: 220px; margin: 0 auto; }
+  }
+
+  /* Final CTA */
+  .final-cta { background: var(--color-terracotta); padding: 80px 20px; }
+  .final-cta-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .final-cta h2 { color: #fff; font-size: clamp(1.6rem, 4.5vw, 2.4rem); max-width: 560px; }
+  .final-cta-actions { display: flex; flex-direction: column; gap: 16px; align-items: flex-start; }
+  .btn-on-dark { background: var(--color-ink); }
+  .final-cta-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+  @media (min-width: 720px) {
+    .final-cta-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+    .final-cta-actions { flex-direction: row; align-items: center; }
+  }
+</style>

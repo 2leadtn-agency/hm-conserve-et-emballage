@@ -1,0 +1,127 @@
+---
+import Icon from "./Icon.astro";
+---
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="footer-logo">HM <span>Conserve &amp; Emballage</span></span>
+      <p lang="ar" dir="rtl" class="footer-arabic">محل تعليب المأكولات</p>
+      <p>Nous mettons en conserve et emballons vos préparations maison — confitures, harissa, légumes, olives — avec le même soin que celui que vous y avez mis.</p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Navigation</h3>
+      <a href="/">Accueil</a>
+      <a href="/nos-methodes/">Nos méthodes</a>
+      <a href="/galerie/">Galerie</a>
+      <a href="/a-propos/">À propos</a>
+      <a href="/contact/">Contact</a>
+    </div>
+
+    <div class="footer-col">
+      <h3>Contact</h3>
+      <a href="tel:+21622796037"><Icon name="phone" size={14} stroke={1.8} /> +216 22 796 037</a>
+      <a href="https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site" target="_blank" rel="noopener noreferrer"><Icon name="mail" size={14} stroke={1.8} /> WhatsApp</a>
+      <span class="footer-address"><Icon name="map-pin" size={14} stroke={1.8} /> Tunisie — zone à confirmer</span>
+    </div>
+
+    <div class="footer-col">
+      <h3>Nos méthodes</h3>
+      <span><Icon name="can" size={14} stroke={1.6} /> Boîtes métalliques</span>
+      <span><Icon name="jar" size={14} stroke={1.6} /> Bocaux en verre</span>
+      <span><Icon name="vacuum-bag" size={14} stroke={1.6} /> Sachets sous vide</span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>© {new Date().getFullYear()} HM Conserve et Emballage — Tous droits réservés.</span>
+    <span class="footer-preview-note">Aperçu de site — non destiné à l'indexation</span>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-ink);
+    color: rgba(248, 239, 220, 0.82);
+    padding: 64px 20px 0;
+  }
+  .footer-top {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(248, 239, 220, 0.12);
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.7rem;
+    color: var(--color-amber-light);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .footer-logo span {
+    font-family: var(--font-body);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(248, 239, 220, 0.55);
+    display: block;
+    margin-top: 4px;
+  }
+  .footer-arabic {
+    font-family: var(--font-arabic);
+    font-size: 1.15rem;
+    color: rgba(248, 239, 220, 0.55);
+    margin-bottom: 14px !important;
+  }
+  .footer-brand p:not(.footer-arabic) {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 320px;
+    color: rgba(248, 239, 220, 0.68);
+  }
+  .footer-col { display: flex; flex-direction: column; gap: 12px; }
+  .footer-col h3 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: #fff;
+    margin-bottom: 4px;
+    font-weight: 600;
+  }
+  .footer-col a, .footer-col span {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    color: rgba(248, 239, 220, 0.72);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .footer-col a:hover { color: var(--color-amber-light); }
+  .footer-address { line-height: 1.6; }
+
+  .footer-bottom {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 22px 0 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: space-between;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    color: rgba(248, 239, 220, 0.45);
+  }
+
+  @media (min-width: 720px) {
+    .footer-top { grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px; }
+  }
+</style>

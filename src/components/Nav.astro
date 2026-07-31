@@ -1,0 +1,282 @@
+---
+import Icon from "./Icon.astro";
+
+export interface Props {
+  active?: string;
+}
+const { active = "" } = Astro.props;
+
+const links = [
+  { href: "/", label: "Accueil", key: "accueil" },
+  { href: "/nos-methodes/", label: "Nos méthodes", key: "methodes" },
+  { href: "/galerie/", label: "Galerie", key: "galerie" },
+  { href: "/a-propos/", label: "À propos", key: "a-propos" },
+  { href: "/contact/", label: "Contact", key: "contact" },
+];
+---
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <a href="tel:+21622796037" class="topbar-phone">
+      <Icon name="phone" size={14} stroke={1.8} />
+      +216 22 796 037
+    </a>
+    <span class="topbar-tagline" lang="ar" dir="rtl">تعليب كل المأكولات المنزلية</span>
+    <a
+      class="topbar-wa"
+      href="https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      WhatsApp
+    </a>
+  </div>
+</div>
+
+<header class="site-nav" id="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <span class="nav-logo-mark">HM</span>
+      <span class="nav-logo-text">Conserve<br />&amp; Emballage</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigation principale">
+      {links.map((l) => (
+        <a href={l.href} class={active === l.key ? "active" : ""}>{l.label}</a>
+      ))}
+    </nav>
+
+    <a
+      class="nav-cta"
+      href="https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Nous écrire
+    </a>
+
+    <button class="nav-burger" id="nav-burger" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="nav-mobile" id="nav-mobile">
+    {links.map((l) => (
+      <a href={l.href} class={active === l.key ? "active" : ""}>{l.label}</a>
+    ))}
+    <a
+      class="nav-mobile-cta"
+      href="https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Nous écrire sur WhatsApp
+    </a>
+  </div>
+</header>
+
+<style>
+  .topbar {
+    background: var(--color-olive-dark);
+    color: #fff;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+  }
+  .topbar-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 7px 20px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .topbar-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+    opacity: 0.95;
+  }
+  .topbar-tagline {
+    flex: 1;
+    text-align: center;
+    opacity: 0.8;
+    display: none;
+    font-size: 0.9rem;
+  }
+  .topbar-wa {
+    color: var(--color-amber-light);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: auto;
+    white-space: nowrap;
+  }
+  @media (min-width: 640px) {
+    .topbar-tagline { display: block; }
+    .topbar-wa { margin-left: 0; }
+  }
+
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    background: rgba(248, 239, 220, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(44, 36, 22, 0.08);
+  }
+  .nav-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    text-decoration: none;
+  }
+  .nav-logo-mark {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 1.9rem;
+    color: var(--color-terracotta);
+    line-height: 1;
+  }
+  .nav-logo-text {
+    font-family: var(--font-body);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink-soft);
+    line-height: 1.3;
+  }
+
+  .nav-links {
+    display: none;
+    align-items: center;
+    gap: 26px;
+    margin-left: 8px;
+  }
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--color-ink);
+    text-decoration: none;
+    position: relative;
+    padding: 4px 0;
+    transition: color 0.3s ease;
+  }
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    width: 0;
+    background: var(--color-terracotta);
+    transition: width 0.35s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active { color: var(--color-terracotta-dark); }
+  .nav-links a:hover::after,
+  .nav-links a.active::after { width: 100%; }
+
+  .nav-cta {
+    display: none;
+    margin-left: auto;
+    background: var(--color-terracotta);
+    color: #fff;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.88rem;
+    padding: 10px 22px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 6px 16px rgba(178, 60, 37, 0.32);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(178, 60, 37, 0.4); }
+
+  .nav-burger {
+    margin-left: auto;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .nav-burger span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-ink);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    background: var(--color-cream);
+    transition: max-height 0.4s ease;
+  }
+  .nav-mobile.open { max-height: 500px; }
+  .nav-mobile a {
+    padding: 16px 24px;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--color-ink);
+    text-decoration: none;
+    border-top: 1px solid rgba(44, 36, 22, 0.08);
+  }
+  .nav-mobile a.active { color: var(--color-terracotta-dark); }
+  .nav-mobile-cta {
+    margin: 14px 24px 20px;
+    background: var(--color-olive);
+    color: #fff !important;
+    text-align: center;
+    border-radius: 100px;
+    padding: 13px 20px !important;
+    font-family: var(--font-body) !important;
+    font-weight: 700;
+    font-size: 0.95rem !important;
+    border-top: none !important;
+  }
+
+  @media (min-width: 960px) {
+    .nav-links { display: flex; }
+    .nav-cta { display: inline-block; }
+    .nav-burger { display: none; }
+    .nav-mobile { display: none !important; }
+  }
+</style>
+
+<script>
+  const burger = document.getElementById("nav-burger");
+  const mobile = document.getElementById("nav-mobile");
+  burger?.addEventListener("click", () => {
+    const expanded = burger.getAttribute("aria-expanded") === "true";
+    burger.setAttribute("aria-expanded", String(!expanded));
+    mobile?.classList.toggle("open");
+  });
+</script>

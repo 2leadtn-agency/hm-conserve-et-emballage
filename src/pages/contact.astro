@@ -1,0 +1,238 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+
+const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
+---
+
+<Layout
+  title="Contact - HM Conserve et Emballage"
+  description="Contactez HM Conserve et Emballage pour votre mise en conserve : téléphone, WhatsApp, zone de service et horaires."
+  active="contact"
+  ogImage="/images/bandeau-contact-conserves-maison.jpg"
+>
+  <section class="contact-hero">
+    <div class="contact-hero-media">
+      <img src="/images/bandeau-contact-conserves-maison.jpg" alt="Bocaux de conserves maison prêts à être remis au client" />
+    </div>
+    <div class="contact-hero-content reveal">
+      <span class="section-kicker">Contact</span>
+      <h1>Parlons de votre <em>préparation.</em></h1>
+      <p>Une question sur la méthode adaptée à votre recette, une quantité, un délai ? Écrivez-nous ou appelez — nous répondons personnellement.</p>
+    </div>
+  </section>
+
+  <section class="contact-main">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <ul class="info-list">
+          <li>
+            <div class="info-icon"><Icon name="phone" size={20} stroke={1.6} /></div>
+            <div>
+              <h3>Téléphone &amp; WhatsApp</h3>
+              <a href="tel:+21622796037">+216 22 796 037</a>
+              <a href={waLink} target="_blank" rel="noopener noreferrer" class="info-wa">Nous écrire sur WhatsApp</a>
+            </div>
+          </li>
+          <li>
+            <div class="info-icon"><Icon name="map-pin" size={20} stroke={1.6} /></div>
+            <div>
+              <h3>Zone de service</h3>
+              <p>Tunisie — zone précise à confirmer avec le client.</p>
+            </div>
+          </li>
+          <li>
+            <div class="info-icon"><Icon name="clock" size={20} stroke={1.6} /></div>
+            <div>
+              <h3>Horaires</h3>
+              <p>À confirmer avec le client.</p>
+            </div>
+          </li>
+          <li>
+            <div class="info-icon"><Icon name="package" size={20} stroke={1.6} /></div>
+            <div>
+              <h3>Dépôt de vos préparations</h3>
+              <p>Apportez vos produits déjà préparés — nous vous conseillons sur la méthode et l'emballage adaptés.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-1" aria-label="Formulaire de contact">
+        <div class="form-tab">Votre message</div>
+        <label>
+          Nom complet
+          <input type="text" name="name" placeholder="Votre nom" required />
+        </label>
+        <label>
+          Téléphone
+          <input type="tel" name="phone" placeholder="+216 ..." required />
+        </label>
+        <label>
+          Type de préparation
+          <select name="type">
+            <option>Confitures</option>
+            <option>Harissa</option>
+            <option>Légumes / olives</option>
+            <option>Plats cuisinés</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>
+          Méthode souhaitée
+          <select name="method">
+            <option>Boîtes métalliques</option>
+            <option>Bocaux en verre</option>
+            <option>Sachets sous vide</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </label>
+        <label>
+          Message
+          <textarea name="message" rows="4" placeholder="Quantité, délai, questions..."></textarea>
+        </label>
+        <button type="submit" class="btn-primary form-submit">
+          <Icon name="send" size={16} stroke={1.8} /> Envoyer le message
+        </button>
+        <p class="form-note">Ce formulaire est une démonstration visuelle — aucune donnée n'est envoyée pour le moment.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="map-section reveal">
+    <span class="section-kicker">Nous trouver</span>
+    <h2>Localisation à confirmer</h2>
+    <div class="map-placeholder">
+      <Icon name="map-pin" size={34} stroke={1.3} />
+      <p>Emplacement Google Maps à intégrer une fois l'adresse confirmée avec le client.</p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-hero { position: relative; }
+  .contact-hero-media { height: 34vh; min-height: 220px; overflow: hidden; }
+  .contact-hero-media img { width: 100%; height: 100%; object-fit: cover; }
+  .contact-hero-content {
+    max-width: 700px;
+    margin: -40px auto 0;
+    position: relative;
+    background: var(--color-cream);
+    border-radius: 24px 24px 0 0;
+    padding: 36px 20px 10px;
+  }
+  .contact-hero-content h1 {
+    font-size: clamp(1.9rem, 6vw, 2.8rem);
+    line-height: 1.12;
+    margin: 10px 0 16px;
+  }
+  .contact-hero-content h1 em { font-style: italic; color: var(--color-terracotta); font-weight: 500; }
+  .contact-hero-content p { color: var(--color-ink-soft); font-size: 1rem; line-height: 1.65; max-width: 520px; }
+
+  .contact-main { max-width: 1100px; margin: 0 auto; padding: 50px 20px 90px; }
+  .contact-grid { display: flex; flex-direction: column; gap: 44px; }
+
+  .info-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 30px; }
+  .info-list li { display: flex; gap: 16px; align-items: flex-start; }
+  .info-icon {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--color-olive-soft);
+    color: var(--color-olive-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .info-list h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .info-list p { color: var(--color-ink-soft); font-size: 0.94rem; line-height: 1.6; max-width: 360px; }
+  .info-list a {
+    display: block;
+    color: var(--color-terracotta-dark);
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 4px;
+  }
+  .info-wa { color: var(--color-olive-dark) !important; font-size: 0.92rem; }
+
+  .contact-form {
+    background: var(--color-white);
+    border-radius: 20px;
+    padding: 30px 24px 26px;
+    box-shadow: 0 18px 44px rgba(44, 36, 22, 0.1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .form-tab {
+    position: absolute;
+    top: -16px;
+    left: 24px;
+    background: var(--color-terracotta);
+    color: #fff;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 8px 20px;
+    border-radius: 100px;
+    box-shadow: 0 6px 14px rgba(178,60,37,0.3);
+  }
+  .contact-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-ink-soft);
+    margin-top: 8px;
+  }
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(44,36,22,0.14);
+    background: var(--color-cream);
+    color: var(--color-ink);
+    resize: vertical;
+  }
+  .contact-form input:focus,
+  .contact-form select:focus,
+  .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-terracotta);
+  }
+  .form-submit { margin-top: 8px; justify-content: center; border: none; cursor: pointer; }
+  .form-note { font-size: 0.74rem; color: var(--color-ink-soft); opacity: 0.75; text-align: center; margin-top: 2px; }
+
+  @media (min-width: 900px) {
+    .contact-grid { flex-direction: row; gap: 60px; }
+    .contact-info { flex: 1; padding-top: 8px; }
+    .contact-form { flex: 1; max-width: 460px; }
+  }
+
+  .map-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+  }
+  .map-section h2 { font-size: clamp(1.5rem, 4vw, 2rem); margin: 8px 0 22px; }
+  .map-placeholder {
+    background: var(--color-olive-soft);
+    border: 1.5px dashed var(--color-olive);
+    border-radius: 18px;
+    padding: 60px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    color: var(--color-olive-dark);
+  }
+  .map-placeholder p { max-width: 400px; font-size: 0.92rem; line-height: 1.6; }
+</style>

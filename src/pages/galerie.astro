@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<Layout
+  title="Galerie - HM Conserve et Emballage"
+  description="Galerie de l'atelier HM Conserve et Emballage — page à venir."
+  active="galerie"
+>
+  <section class="placeholder">
+    <Icon name="sparkles" size={38} stroke={1.3} />
+    <p>Contenu bientôt disponible</p>
+  </section>
+</Layout>
+
+<style>
+  .placeholder {
+    min-height: 46vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    padding: 90px 20px;
+    color: var(--color-ink-soft);
+    text-align: center;
+  }
+  .placeholder :global(svg) { color: var(--color-terracotta); }
+  .placeholder p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--color-ink);
+  }
+</style>
