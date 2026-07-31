@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
-import Picture from "../components/Picture.astro";
 
 const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
 ---
@@ -15,11 +14,11 @@ const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte
 >
   <section class="contact-hero">
     <div class="contact-hero-media">
-      <Picture
+      <img
         src="/images/bandeau-contact-conserves-maison.jpg"
         alt="Bocaux de conserves maison prêts à être remis au client"
-        width={1680}
-        height={799}
+        width="1680"
+        height="799"
         loading="eager"
         fetchpriority="high"
       />

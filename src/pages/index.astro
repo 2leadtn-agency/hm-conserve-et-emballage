@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
-import Picture from "../components/Picture.astro";
 
 const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
 
@@ -61,11 +60,11 @@ const trust = [
   <section class="hero">
     <div class="hero-media">
       <div class="hero-media-parallax" id="heroParallax">
-        <Picture
+        <img
           src="/images/hero-bocaux-lumiere-doree.jpg"
           alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée"
-          width={1680}
-          height={943}
+          width="1680"
+          height="943"
           loading="eager"
           fetchpriority="high"
         />
@@ -124,14 +123,14 @@ const trust = [
       </div>
       <div class="narrative-media">
         <figure class="narrative-photo narrative-photo-before reveal">
-          <Picture src="/images/femme-cuisine-marmite-legumes-maison.jpg" alt="Préparation de légumes faits maison dans une marmite, cuisine traditionnelle" width={1110} height={1441} loading="lazy" />
+          <img src="/images/femme-cuisine-marmite-legumes-maison.jpg" alt="Préparation de légumes faits maison dans une marmite, cuisine traditionnelle" width="1110" height="1441" loading="lazy" />
           <figcaption>Votre préparation, à la maison</figcaption>
         </figure>
         <div class="narrative-arrow reveal reveal-delay-1" aria-hidden="true">
           <Icon name="arrow-down-right" size={30} stroke={1.4} />
         </div>
         <figure class="narrative-photo narrative-photo-after reveal reveal-delay-2">
-          <Picture src="/images/bocaux-harissa-mise-en-pot-atelier.jpg" alt="Bocaux de harissa mis en pot dans un atelier propre et professionnel" width={1114} height={1430} loading="lazy" />
+          <img src="/images/bocaux-harissa-mise-en-pot-atelier.jpg" alt="Bocaux de harissa mis en pot dans un atelier propre et professionnel" width="1114" height="1430" loading="lazy" />
           <figcaption>Votre conserve, prête à durer</figcaption>
         </figure>
       </div>
@@ -149,7 +148,7 @@ const trust = [
       {methods.map((m, i) => (
         <article class={`method-row ${i % 2 === 1 ? "method-row-reverse" : ""} reveal`}>
           <div class="method-media">
-            <Picture src={m.img} alt={m.alt} width={m.w} height={m.h} loading="lazy" />
+            <img src={m.img} alt={m.alt} width={m.w} height={m.h} loading="lazy" />
           </div>
           <div class="method-text">
             <span class="method-num">{m.num}</span>
@@ -176,13 +175,13 @@ const trust = [
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item gallery-item-wide reveal">
-        <Picture src="/images/olives-conserves-bocaux-etageres.jpg" alt="Étagères de bocaux d'olives et de légumes conservés" width={1680} height={968} loading="lazy" />
+        <img src="/images/olives-conserves-bocaux-etageres.jpg" alt="Étagères de bocaux d'olives et de légumes conservés" width="1680" height="968" loading="lazy" />
       </figure>
       <figure class="gallery-item gallery-item-round reveal reveal-delay-1">
-        <Picture src="/images/atelier-emballage-hygiene-gants.jpg" alt="Mains gantées manipulant des conserves dans un atelier hygiénique" width={1233} height={1271} loading="lazy" />
+        <img src="/images/atelier-emballage-hygiene-gants.jpg" alt="Mains gantées manipulant des conserves dans un atelier hygiénique" width="1233" height="1271" loading="lazy" />
       </figure>
       <figure class="gallery-item gallery-item-tall reveal reveal-delay-2">
-        <Picture src="/images/legumes-frais-panier-marche.jpg" alt="Panier de légumes frais apportés pour la mise en conserve" width={1177} height={1401} loading="lazy" />
+        <img src="/images/legumes-frais-panier-marche.jpg" alt="Panier de légumes frais apportés pour la mise en conserve" width="1177" height="1401" loading="lazy" />
       </figure>
     </div>
   </section>

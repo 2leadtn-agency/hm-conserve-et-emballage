@@ -45,7 +45,7 @@ const siteUrl = "https://hm-conserve-et-emballage.example.com";
       rel="stylesheet"
     />
     {preloadImage && (
-      <link rel="preload" as="image" href={preloadImage.replace(/\.jpg$/, ".webp")} type="image/webp" fetchpriority="high" />
+      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
     )}
 
     <style is:global>
@@ -80,7 +80,6 @@ const siteUrl = "https://hm-conserve-et-emballage.example.com";
         overflow-x: hidden;
       }
       img { max-width: 100%; display: block; }
-      picture { display: contents; }
 
       body::before {
         content: "";
