@@ -67,10 +67,10 @@ const trust = [
     </div>
 
     <div class="hero-content">
-      <p class="hero-eyebrow reveal">Conserverie artisanale &middot; Tunisie</p>
-      <h1 class="hero-title reveal reveal-delay-1">Ce que vos mains<br />ont cuisiné,<br /><em>nous le préservons.</em></h1>
-      <p class="hero-lede reveal reveal-delay-2">HM Conserve et Emballage transforme vos préparations maison en conserves professionnelles — boîtes métalliques, bocaux en verre ou sachets sous vide — sans jamais toucher à votre recette.</p>
-      <div class="hero-actions reveal reveal-delay-3">
+      <p class="hero-eyebrow hero-enter">Conserverie artisanale &middot; Tunisie</p>
+      <h1 class="hero-title hero-enter hero-enter-delay-1">Ce que vos mains<br />ont cuisiné,<br /><em>nous le préservons.</em></h1>
+      <p class="hero-lede hero-enter hero-enter-delay-2">HM Conserve et Emballage transforme vos préparations maison en conserves professionnelles — boîtes métalliques, bocaux en verre ou sachets sous vide — sans jamais toucher à votre recette.</p>
+      <div class="hero-actions hero-enter hero-enter-delay-3">
         <a class="btn-primary" href={waLink} target="_blank" rel="noopener noreferrer">
           <Icon name="phone" size={17} stroke={1.8} /> Discuter sur WhatsApp
         </a>
@@ -80,7 +80,7 @@ const trust = [
       </div>
     </div>
 
-    <div class="hero-seal reveal reveal-delay-2" aria-hidden="true">
+    <div class="hero-seal hero-enter hero-enter-delay-2" aria-hidden="true">
       <svg viewBox="0 0 200 200">
         <defs>
           <path id="sealCirc" d="M100,100 m-80,0 a80,80 0 1,1 160,0 a80,80 0 1,1 -160,0" />
@@ -203,10 +203,30 @@ const trust = [
     height: 58vh;
     min-height: 380px;
     overflow: hidden;
+    background-color: var(--color-cream-deep);
     background-image: url("/images/hero-bocaux-lumiere-doree.jpg");
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
+  }
+
+  /* Hero content fades in on paint via CSS only -- must not wait on the
+     IntersectionObserver script, or the whole hero sits blank until that
+     script downloads and runs on a slow first mobile load. */
+  .hero-enter {
+    opacity: 0;
+    transform: translateY(22px);
+    animation: hero-fade-up 0.7s ease forwards;
+    animation-delay: 0.05s;
+  }
+  .hero-enter-delay-1 { animation-delay: 0.15s; }
+  .hero-enter-delay-2 { animation-delay: 0.25s; }
+  .hero-enter-delay-3 { animation-delay: 0.35s; }
+  @keyframes hero-fade-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-enter { opacity: 1; transform: none; animation: none; }
   }
   .hero-media-veil {
     position: absolute;
