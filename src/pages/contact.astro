@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
+import Picture from "../components/Picture.astro";
 
 const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
 ---
@@ -10,10 +11,18 @@ const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte
   description="Contactez HM Conserve et Emballage pour votre mise en conserve : téléphone, WhatsApp, zone de service et horaires."
   active="contact"
   ogImage="/images/bandeau-contact-conserves-maison.jpg"
+  preloadImage="/images/bandeau-contact-conserves-maison.jpg"
 >
   <section class="contact-hero">
     <div class="contact-hero-media">
-      <img src="/images/bandeau-contact-conserves-maison.jpg" alt="Bocaux de conserves maison prêts à être remis au client" />
+      <Picture
+        src="/images/bandeau-contact-conserves-maison.jpg"
+        alt="Bocaux de conserves maison prêts à être remis au client"
+        width={1680}
+        height={799}
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
     <div class="contact-hero-content reveal">
       <span class="section-kicker">Contact</span>

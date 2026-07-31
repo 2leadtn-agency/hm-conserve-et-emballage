@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/Icon.astro";
+import Picture from "../components/Picture.astro";
 
 const waLink = "https://wa.me/21622796037?text=Bonjour%2C%20je%20vous%20contacte%20depuis%20votre%20site";
 
@@ -11,6 +12,8 @@ const methods = [
     title: "Boîtes métalliques",
     subtitle: "Conserve métallique",
     img: "/images/gros-plan-boites-metalliques-scellees.jpg",
+    w: 1280,
+    h: 850,
     alt: "Gros plan sur des boîtes de conserve métalliques scellées, empilées",
     text: "Idéale pour les grandes quantités et une conservation longue durée à température ambiante. Vos plats mijotés, sauces et légumes sont scellés hermétiquement puis stérilisés.",
     tags: ["Plats cuisinés", "Sauces & confitures", "Grandes quantités"],
@@ -21,6 +24,8 @@ const methods = [
     title: "Bocaux en verre",
     subtitle: "بلار",
     img: "/images/mains-vissant-couvercle-bocal-verre.jpg",
+    w: 1280,
+    h: 892,
     alt: "Mains fermant le couvercle d'un bocal en verre rempli de légumes conservés",
     text: "Le verre laisse voir la couleur et la texture de votre préparation — confiture, harissa, légumes marinés — tout en gardant l'authenticité du fait-maison.",
     tags: ["Confitures", "Harissa", "Légumes marinés & olives"],
@@ -31,6 +36,8 @@ const methods = [
     title: "Sachets sous vide",
     subtitle: "Sous vide",
     img: "/images/sachets-sous-vide-legumes-empiles.jpg",
+    w: 1280,
+    h: 861,
     alt: "Sachets sous vide empilés contenant des légumes préparés maison",
     text: "Sans air, sans oxydation : le sous vide protège la fraîcheur et prolonge la conservation au réfrigérateur ou au congélateur. Idéal pour les portions du quotidien.",
     tags: ["Portions individuelles", "Surgélation", "Fraîcheur prolongée"],
@@ -49,10 +56,18 @@ const trust = [
   title="HM Conserve et Emballage - Mise en Conserve Artisanale"
   description="Apportez vos préparations maison — confitures, harissa, légumes, olives — HM Conserve et Emballage les met en conserve professionnellement : boîtes métalliques, bocaux en verre, sachets sous vide."
   active="accueil"
+  preloadImage="/images/hero-bocaux-lumiere-doree.jpg"
 >
   <section class="hero">
     <div class="hero-media">
-      <img src="/images/hero-bocaux-lumiere-doree.jpg" alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée" />
+      <Picture
+        src="/images/hero-bocaux-lumiere-doree.jpg"
+        alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée"
+        width={1680}
+        height={941}
+        loading="eager"
+        fetchpriority="high"
+      />
       <div class="hero-media-veil"></div>
     </div>
 
@@ -107,14 +122,14 @@ const trust = [
       </div>
       <div class="narrative-media">
         <figure class="narrative-photo narrative-photo-before reveal">
-          <img src="/images/femme-cuisine-marmite-legumes-maison.jpg" alt="Préparation de légumes faits maison dans une marmite, cuisine traditionnelle" />
+          <Picture src="/images/femme-cuisine-marmite-legumes-maison.jpg" alt="Préparation de légumes faits maison dans une marmite, cuisine traditionnelle" width={1110} height={1441} loading="lazy" />
           <figcaption>Votre préparation, à la maison</figcaption>
         </figure>
         <div class="narrative-arrow reveal reveal-delay-1" aria-hidden="true">
           <Icon name="arrow-down-right" size={30} stroke={1.4} />
         </div>
         <figure class="narrative-photo narrative-photo-after reveal reveal-delay-2">
-          <img src="/images/bocaux-harissa-mise-en-pot-atelier.jpg" alt="Bocaux de harissa mis en pot dans un atelier propre et professionnel" />
+          <Picture src="/images/bocaux-harissa-mise-en-pot-atelier.jpg" alt="Bocaux de harissa mis en pot dans un atelier propre et professionnel" width={1114} height={1430} loading="lazy" />
           <figcaption>Votre conserve, prête à durer</figcaption>
         </figure>
       </div>
@@ -132,7 +147,7 @@ const trust = [
       {methods.map((m, i) => (
         <article class={`method-row ${i % 2 === 1 ? "method-row-reverse" : ""} reveal`}>
           <div class="method-media">
-            <img src={m.img} alt={m.alt} loading="lazy" />
+            <Picture src={m.img} alt={m.alt} width={m.w} height={m.h} loading="lazy" />
           </div>
           <div class="method-text">
             <span class="method-num">{m.num}</span>
@@ -159,13 +174,13 @@ const trust = [
     </div>
     <div class="gallery-grid">
       <figure class="gallery-item gallery-item-wide reveal">
-        <img src="/images/olives-conserves-bocaux-etageres.jpg" alt="Étagères de bocaux d'olives et de légumes conservés" loading="lazy" />
+        <Picture src="/images/olives-conserves-bocaux-etageres.jpg" alt="Étagères de bocaux d'olives et de légumes conservés" width={1680} height={968} loading="lazy" />
       </figure>
       <figure class="gallery-item gallery-item-round reveal reveal-delay-1">
-        <img src="/images/atelier-emballage-hygiene-gants.jpg" alt="Mains gantées manipulant des conserves dans un atelier hygiénique" loading="lazy" />
+        <Picture src="/images/atelier-emballage-hygiene-gants.jpg" alt="Mains gantées manipulant des conserves dans un atelier hygiénique" width={1233} height={1271} loading="lazy" />
       </figure>
       <figure class="gallery-item gallery-item-tall reveal reveal-delay-2">
-        <img src="/images/legumes-frais-panier-marche.jpg" alt="Panier de légumes frais apportés pour la mise en conserve" loading="lazy" />
+        <Picture src="/images/legumes-frais-panier-marche.jpg" alt="Panier de légumes frais apportés pour la mise en conserve" width={1177} height={1401} loading="lazy" />
       </figure>
     </div>
   </section>

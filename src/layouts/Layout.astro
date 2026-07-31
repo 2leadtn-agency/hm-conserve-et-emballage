@@ -8,6 +8,7 @@ export interface Props {
   description: string;
   active?: string;
   ogImage?: string;
+  preloadImage?: string;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description,
   active = "",
   ogImage = "/images/hero-bocaux-lumiere-doree.jpg",
+  preloadImage,
 } = Astro.props;
 
 const siteUrl = "https://hm-conserve-et-emballage.example.com";
@@ -42,6 +44,9 @@ const siteUrl = "https://hm-conserve-et-emballage.example.com";
       href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Archivo:wght@400;500;600;700;800&family=Aref+Ruqaa:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    {preloadImage && (
+      <link rel="preload" as="image" href={preloadImage.replace(/\.jpg$/, ".webp")} type="image/webp" fetchpriority="high" />
+    )}
 
     <style is:global>
       :root {
@@ -75,6 +80,7 @@ const siteUrl = "https://hm-conserve-et-emballage.example.com";
         overflow-x: hidden;
       }
       img { max-width: 100%; display: block; }
+      picture { display: contents; }
 
       body::before {
         content: "";
