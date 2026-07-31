@@ -60,14 +60,16 @@ const trust = [
 >
   <section class="hero">
     <div class="hero-media">
-      <Picture
-        src="/images/hero-bocaux-lumiere-doree.jpg"
-        alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée"
-        width={1680}
-        height={943}
-        loading="eager"
-        fetchpriority="high"
-      />
+      <div class="hero-media-parallax" id="heroParallax">
+        <Picture
+          src="/images/hero-bocaux-lumiere-doree.jpg"
+          alt="Rangées de bocaux en verre remplis de préparations maison, éclairés par une lumière dorée"
+          width={1680}
+          height={943}
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
       <div class="hero-media-veil"></div>
     </div>
 
@@ -208,6 +210,14 @@ const trust = [
     height: 58vh;
     min-height: 380px;
     overflow: hidden;
+  }
+  .hero-media-parallax {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -10%;
+    height: 120%;
+    will-change: transform;
   }
   .hero-media img { width: 100%; height: 100%; object-fit: cover; }
   .hero-media-veil {
@@ -548,3 +558,35 @@ const trust = [
     .final-cta-actions { flex-direction: row; align-items: center; }
   }
 </style>
+
+<script>
+  (function () {
+    var track = document.getElementById("heroParallax");
+    if (!track) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var media = track.parentElement;
+    var hero = media.closest(".hero");
+    var ticking = false;
+
+    function apply() {
+      ticking = false;
+      var rect = hero.getBoundingClientRect();
+      if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+      var maxShift = media.offsetHeight * 0.08;
+      var offset = Math.max(-maxShift, Math.min(maxShift, -rect.top * 0.25));
+      track.style.transform = "translate3d(0, " + offset.toFixed(1) + "px, 0)";
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(apply);
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    apply();
+  })();
+</script>
